@@ -1,24 +1,93 @@
 <!DOCTYPE html>
-<html>
+
+<head>
+<meta charset = "UTF-8"/>
+<title>Tudo sobre google glass</title>
+
+<link rel="stylesheet" href="_css/estilo.css">
+
+
+</head>
+
 <body>
-<script>
-function light(sw) {
-    var pic;
-    if (sw == 0) {
-        pic = "pic_bulboff.gif"
-    } else {
-        pic = "pic_bulbon.gif"
-    }
-    document.getElementById('myImage').src = pic;
-}
-</script>
+<div id="interface">
 
-<img id="myImage" src="pic_bulboff.gif" width="100" height="180">
+	<header id="cabecalho">
+		<hgroup>
+			<h1>Temperatura e Pressão</h1>
+		</hgroup>
+	
+	
+	
+		
+	</header>
+	
+<section id="corpo">
 
-<p>
-<button type="button" onclick="light(1)">Ligt On</button>
-<button type="button" onclick="light(0)">Light Off</button>
-</p>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+    	  
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Temperatura', 100],
+          ['Pressão', 100],
+          ]);
+
+        var options = {
+          width: 500, height: 350,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+	
+      
+        
+        setInterval(function() {
+        	
+        	var temperatura = 5 + Math.round(10 * Math.random());
+        	data.setValue(0, 1, temperatura);
+        	chart.draw(data, options);
+        	document.getElementById("temperatura").innerHTML = "A temperatura é: " +temperatura +" C";
+        	
+                    
+        }, 1000);
+        
+       
+        setInterval(function() {
+       		var pressao = 5 + Math.round(30 * Math.random());
+       		data.setValue(1, 1, pressao);
+          chart.draw(data, options);
+          document.getElementById("pressao").innerHTML = "A pressão é: " +pressao +" Pa";
+          document.getElementById("data").innerHTML = Date();
+        }, 1000);
+          
+      }
+      
+    </script>
+<div id="chart_div" style="width: 800px; height: 350px;"></div>
+</section>
+
+<aside id="lateral">
+
+	 <h1 id="temperatura">A temperatura é: </h1>
+ 	 <h1 id="pressao">A pressão é: </h1>
+ 	 <h2 id="data"></h2>
+
+</aside>
+
+<footer id="rodape">
+<p>Augusto Cabral Gesualdo</p>
+
+</footer>
+</div>
 
 </body>
 </html>
