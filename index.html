@@ -53,11 +53,19 @@
         
         setInterval(function() {
         	
-        	var temperatura = 5 + Math.round(10 * Math.random());
+        	var temperatura = 5 + Math.round(15 * Math.random());
         	data.setValue(0, 1, temperatura);
         	chart.draw(data, options);
         	document.getElementById("temperatura").innerHTML = "A temperatura é: " +temperatura +" C";
-        	
+		        if (temperatura >15){
+		        	
+		        	document.getElementById("luz").src = "_imagens/lampada-acesa.jpg"
+		        }
+        
+				if (temperatura <15){
+				        	
+				        	document.getElementById("luz").src = "_imagens/lampada-apagada.jpg"
+				        }
                     
         }, 1000);
         
@@ -72,14 +80,23 @@
           
       }
       
+      
     </script>
 <div id="chart_div" style="width: 800px; height: 350px;"></div>
 </section>
+
+
+<aside id="lampada">
+
+ <img id="luz" src="_imagens/lampada-apagada.jpg">
+
+</aside>
 
 <aside id="lateral">
 
 	 <h1 id="temperatura">A temperatura é: </h1>
  	 <h1 id="pressao">A pressão é: </h1>
+ 	
  	 <h2 id="data"></h2>
 
 </aside>

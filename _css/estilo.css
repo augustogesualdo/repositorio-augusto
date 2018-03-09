@@ -26,10 +26,13 @@ section#corpo{
 }	
 	
 aside#lateral{
+	position: relative;
 	display: block;
-	width: 480px;
+	width: 240px;
 	float: right;
 	}
+	
+
 
 aside#lateral h1 {
 	text-align: left;
@@ -83,8 +86,18 @@ header#cabecalho h1{
 }
 
 
+aside#lampada{
+	position: relative;
+	display: block;
+	width: 240px;
+	float: right;
+	}
 
-
+aside#lampada img{
+	
+	width: 200px;
+	padding-left: 50px;
+}
 
 
 
