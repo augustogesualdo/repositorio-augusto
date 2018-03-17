@@ -10,6 +10,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
+
+
+
 <!-- AnglularJs -->
 <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/C9CAB389-3A15-7643-A085-30F97273C897/main.js" charset="UTF-8"></script><script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
@@ -34,6 +38,8 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 <script>
+
+ 	 
 	var url = 'http://35.199.76.183:3000/temperatura';
 	angular.module('iot', []).controller(
 			'sensor',
@@ -87,6 +93,7 @@
 				};
 
 			});
+	
 </script>
 </head>
 
@@ -107,6 +114,8 @@
 				</div>
 				<button type="button" class="btn btn-primary" ng-click="SendData()">Enviar</button>
 				<p></p>
+				
+				
 				<div data-ng-show="showSuccess" class="alert alert-success">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Enviado
 						com Sucesso!</strong>
@@ -125,12 +134,14 @@
 						</tr>
 					</thead>
 					<tbody>
+						
+						
 						<tr ng-repeat="s in sensor">
 							
-							setInterval(function(){<td>{{s.id}}</td>
-							<td>{{s.time}}</td>
-							<td>{{s.valor}}</td> }, 1000);
 							
+							<td>{{s.id}}</td>
+							<td>{{s.time}}</td>
+							<td>{{s.valor}}</td>
 							
 							
 						</tr>
